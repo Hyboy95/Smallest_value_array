@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="input_arr"> Nhập vào phần tử của mảng</label>
+<input type="text" id="input_arr">
+<button id="add_element" onclick="add_element_to_array()">Add</button>
+<button id="display_arr" onclick="display_array()">Display</button>
+<button id="Reset_arr" onclick="reset_array()">Reset</button>
+<button id="Find_smallest" onclick="Find_smallest_element()">Find_Smallest</button>
+<p id="display"></p>
+<p id="result"></p>
+</body>
+</html>
+<script>
+  let arr = [];
+  function  add_element_to_array() {
+    let input = +document.getElementById('input_arr').value;
+    alert(`Phần tử ${input} được thêm vào vị trí ${arr.length} của mảng`);
+    arr.push(input);
+    document.getElementById('input_arr').value = '';
+  }
+
+  function display_array() {
+    document.getElementById('display').innerHTML = `Mảng bạn nhập vào là: [${arr}]`;
+  }
+
+  function reset_array() {
+    arr = [];
+    document.getElementById('display').innerHTML = `Mảng bạn nhập vào đã được reset.`;
+  }
+
+  function  find_smallest(array) {
+    let min = array[0];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] < min) {
+        min = array[i];
+      }
+    }
+    return min;
+  }
+
+  function Find_smallest_element() {
+    let smallest_value = find_smallest(arr);
+    document.getElementById('result').innerHTML = `Giá trị nhỏ nhất trong mảng:${smallest_value}`;
+  }
+</script>
